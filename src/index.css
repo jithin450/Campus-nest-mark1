@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 250 100% 99%;
+    --foreground: 220 15% 15%;
+
+    --card: 250 100% 99%;
+    --card-foreground: 220 15% 15%;
+
+    --popover: 250 100% 99%;
+    --popover-foreground: 220 15% 15%;
+
+    --primary: 0 84% 50%;
+    --primary-foreground: 250 100% 99%;
+
+    --secondary: 45 100% 50%;
+    --secondary-foreground: 220 15% 15%;
+
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 45 100% 50%;
+    --accent-foreground: 220 15% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 250 100% 99%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 0 84% 50%;
+
+    --radius: 0.75rem;
+
+    /* NIAT-themed gradients and colors */
+    --gradient-primary: linear-gradient(135deg, hsl(0 84% 50%), hsl(0 84% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 84% 50%) 0%, hsl(45 100% 50%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(250 100% 99%) 0%, hsl(220 14% 98%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(250 100% 99%) 0%, hsl(220 14% 96%) 100%);
+    
+    /* Beautiful shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(0 84% 50% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(220 15% 15% / 0.08);
+    --shadow-glow: 0 0 40px hsl(0 84% 50% / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 250 100% 99%;
+    --sidebar-foreground: 220 15% 15%;
+    --sidebar-primary: 0 84% 50%;
+    --sidebar-primary-foreground: 250 100% 99%;
+    --sidebar-accent: 220 14% 95%;
+    --sidebar-accent-foreground: 220 15% 15%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 0 84% 50%;
+  }
+
+  .dark {
+    --background: 220 15% 8%;
+    --foreground: 250 100% 95%;
+
+    --card: 220 15% 10%;
+    --card-foreground: 250 100% 95%;
+
+    --popover: 220 15% 10%;
+    --popover-foreground: 250 100% 95%;
+
+    --primary: 0 84% 55%;
+    --primary-foreground: 220 15% 8%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 250 100% 95%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 8% 65%;
+
+    --accent: 45 100% 55%;
+    --accent-foreground: 220 15% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 250 100% 95%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 0 84% 55%;
+
+    /* Dark theme gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 84% 55%), hsl(0 84% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 84% 55%) 0%, hsl(45 100% 55%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 15% 10%) 0%, hsl(220 15% 12%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(220 15% 8%) 0%, hsl(220 15% 12%) 100%);
+    
+    /* Dark theme shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(0 84% 55% / 0.4);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 0 40px hsl(0 84% 55% / 0.5);
+
+    --sidebar-background: 220 15% 8%;
+    --sidebar-foreground: 250 100% 95%;
+    --sidebar-primary: 0 84% 55%;
+    --sidebar-primary-foreground: 220 15% 8%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 250 100% 95%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 0 84% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Beautiful button variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300;
+  }
+  
+  .btn-glass {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300;
+  }
+  
+  /* Card enhancements */
+  .card-elegant {
+    @apply bg-gradient-to-br from-card to-card/95 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-all duration-300;
+  }
+  
+  .card-glow {
+    @apply relative overflow-hidden bg-gradient-to-br from-card to-card/95 shadow-[var(--shadow-glow)] transition-all duration-300;
+  }
+  
+  /* Interactive animations */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[var(--shadow-glow)];
+  }
+  
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+}

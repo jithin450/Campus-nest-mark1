@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.test.json",
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
+  "compilerOptions": {
+    "types": ["vitest", "node"],
+    "paths": {
+      "@/*": ["../src/*"]
+    }
+  }
+}
