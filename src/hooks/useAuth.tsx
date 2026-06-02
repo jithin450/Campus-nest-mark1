@@ -59,6 +59,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   // Sign up function
   const signUp = async (email: string, password: string, fullName: string) => {
     try {
+      console.log('Attempting sign up for:', email);
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
@@ -70,12 +71,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       });
 
       if (error) {
+        console.error('Supabase signUp error details:', {
+          message: error.message,
+          status: error.status,
+          name: error.name
+        });
         return { error };
       }
 
-      // Profile will be created automatically by the database trigger
+      console.log('Sign up successful, user data:', data);
       return { error: null };
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Unexpected error during signUp:', error);
+      // Log the full error object to see status codes and response bodies
+      if (error.response) {
+        console.error('Error response data:', error.response.data);
+      }
       return { error: error as AuthError };
     }
   };

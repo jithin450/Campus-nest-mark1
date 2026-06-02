@@ -265,6 +265,9 @@ const Auth: React.FC = () => {
                       </Button>
                     </div>
                   </div>
+
+
+
                   <Button
                     type="submit"
                     className="w-full bg-gradient-to-r from-primary to-accent hover:scale-105 transition-transform duration-300"
